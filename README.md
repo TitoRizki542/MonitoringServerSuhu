@@ -1,25 +1,25 @@
-# SISTEM MONITORING SUHU BERBASIS RUANG SERVER BERBASIS WEB
+# SERVER ROOM TEMPERATURE MONITORING SYSTEM BASED ON WEB
 
-## Deskripsi Proyek
-Proyek IoT (Internet of Things) ini adalah sistem monitoring suhu dan kelembaban ruang server pada hotel The The Royal Solo, Novotel Solo, Ibis Solo, berbasis web yang dibangun menggunakan Laravel sebagai backend framework, Firebase Realtime Database sebagai sumber data sensor secara realtime, dan MySQL sebagai penyimpanan historis data.
+## 📌 PROJECT DESCRIPTION
+This IoT (Internet of Things) project is a temperature and humidity monitoring system for server rooms at The Royal Solo Hotel, Novotel Solo, and Ibis Solo, built as a web-based application using Laravel as the backend framework, Firebase Realtime Database as the source of sensor data in real-time, and MySQL as historical data storage
 
-## Tujuan sistem ini adalah:
-- Mengambil data sensor (misalnya suhu, kelembaban, server status, dsb) dari Firebase Realtime Database.
-- Menampilkan data dalam bentuk grafik & tabel agar mudah dipantau.
-- Memberikan tampilan dashboard monitoring yang interaktif.
-- Menyimpan data secara periodik ke MySQL menggunakan Laravel Scheduler / Cron Job.
+## System Objectives:
+- Retrieve sensor data (e.g., temperature, humidity, server status, etc.) from Firebase Realtime Database.
+- Display data in the form of charts and tables for easy monitoring.
+- Provide an interactive monitoring dashboard.
+- Periodically store data into MySQL using Laravel Scheduler / Cron Job.
 
 ## Teknlogi Yang Digunakan (Software)
 -Laravel 12 – Backend & Frontend Framework
--Firebase Realtime Database – Sumber data IoT
--MySQL – Database penyimpanan histori
--Larapex Charts / ApexCharts – Visualisasi data sensor
+-Firebase Realtime Database – IoT Data Source
+-MySQL – Historical Data Storage
+-Larapex Charts / ApexCharts – Data Visualization
 
 ## Teknologi Yang Digunakan (Hardware)
 - ESP 32 C3
 - Sensor DHT11
 
 ## Kontributor
-- Raehan Widi Sugiarto sebagai teknisi perakit komponen
-- TIto Rizki Purnomo sebagai pembuat website dashboard monitoring
+- **Raehan Widi Sugiarto** as hardware assembly technician
+- **TIto Rizki Purnomo** as Developer of the Monitoring Dashboard Website
 
