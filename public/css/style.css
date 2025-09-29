@@ -1,0 +1,278 @@
+/* Palet Warna Modern:
+   - Primary: #007bff (Biru Cerdas)
+   - Background: #f4f7f6 (Abu-abu Muda)
+   - Card Background: #ffffff (Putih Bersih)
+   - Success/Online: #28a745 (Hijau)
+   - Warning/Perhatian: #ffc107 (Kuning)
+*/
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f4f7f6;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* --- Header --- */
+.dashboard-header {
+    background-color: #007bff;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-header h1 {
+    margin-bottom: 5px;
+    font-size: 2.2em;
+}
+
+/* --- Container Utama (Menggunakan Grid untuk Responsif) --- */
+.dashboard-container {
+    display: grid;
+    /* Grid 1 kolom untuk layar kecil, 2 kolom untuk layar besar */
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding: 30px;
+    max-width: 1200px;
+    margin: 30px auto;
+}
+
+@media (min-width: 768px) {
+    .dashboard-container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* --- Kartu Ruangan Server --- */
+.server-room-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-top: 5px solid #007bff; /* Garis pembeda modern */
+}
+
+.server-room-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Warna khusus untuk kartu berdasarkan status/kondisi */
+.room-2.server-room-card {
+    border-top-color: #ffc107; /* Warna peringatan */
+}
+
+
+/* --- Header Kartu --- */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.card-header h2 {
+    font-size: 1.6em;
+    color: #007bff;
+}
+
+.card-header .fas {
+    margin-right: 10px;
+    color: #007bff;
+}
+
+/* --- Indikator Status --- */
+.status-indicator {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.status-indicator.online {
+    background-color: #28a745; /* Hijau */
+    color: white;
+}
+
+.status-indicator.warning {
+    background-color: #ffc107; /* Kuning */
+    color: #333;
+}
+
+/* --- Data Grid (Suhu & Kelembapan) --- */
+.data-grid {
+    display: flex; /* Flexbox untuk mensejajarkan data */
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.data-item {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background-color: #f8f9fa; /* Latar belakang item data */
+    border-radius: 8px;
+    transition: background-color 0.2s;
+    min-width: 45%; /* Pastikan masing-masing mengambil ruang yang cukup */
+}
+
+.data-item:hover {
+    background-color: #e9ecef;
+}
+
+.data-item .fas {
+    font-size: 2.5em;
+    margin-right: 15px;
+    color: #007bff;
+}
+
+.data-item.humidity .fas {
+    color: #17a2b8; /* Cyan untuk kelembapan */
+}
+
+.value-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.label {
+    font-size: 0.9em;
+    color: #6c757d;
+    font-weight: 500;
+}
+
+.value {
+    font-size: 2.2em;
+    font-weight: bold;
+    color: #333;
+    line-height: 1.1;
+}
+
+/* --- Pembaruan Terakhir --- */
+.last-update {
+    font-size: 0.85em;
+    color: #888;
+    text-align: right;
+    padding-top: 15px;
+    border-top: 1px dashed #eee;
+}
+
+/* --- Tambahkan kode ini di akhir file style.css Anda --- */
+
+.chart-container {
+    width: 80%; /* Lebar wadah grafik */
+    max-width: 900px; /* Batas lebar maksimum */
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Memastikan elemen canvas responsif */
+#tempHumidChart {
+    width: 100% !important;
+    height: 400px !important;
+}
+
+/* Aturan untuk Tablet dan Laptop (lebar layar > 768px) */
+@media (min-width: 768px) {
+    .dashboard-container {
+        /* Mengubah tata letak menjadi 2 kolom */
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* Aturan untuk Layar Sangat Besar (lebar layar > 1200px) */
+@media (min-width: 1200px) {
+    .dashboard-container {
+        max-width: 1400px;
+        padding: 50px;
+        gap: 50px;
+    }
+
+    .dashboard-header {
+        padding: 30px 60px;
+    }
+
+    .card-header h2 {
+        font-size: 1.8em;
+    }
+
+    .data-item .fas {
+        font-size: 3em;
+    }
+
+    .value {
+        font-size: 2.8em;
+    }
+}
+
+/* Aturan Khusus untuk Layar Ponsel (lebar layar <= 600px) */
+@media (max-width: 600px) {
+    .dashboard-header h1 {
+        font-size: 1.8em;
+    }
+
+    .dashboard-header p {
+        font-size: 0.9em;
+    }
+
+    .dashboard-container {
+        padding: 15px;
+    }
+
+    .server-room-card {
+        padding: 20px;
+    }
+
+    .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 15px;
+    }
+
+    .status-indicator {
+        margin-top: 10px;
+    }
+
+    .data-grid {
+        /* Mengubah flexbox menjadi kolom */
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .data-item {
+        padding: 12px;
+        min-width: 100%;
+    }
+
+    .data-item .fas {
+        font-size: 2em;
+    }
+
+    .value {
+        font-size: 1.8em;
+    }
+
+    .last-update {
+        text-align: center;
+    }
+}

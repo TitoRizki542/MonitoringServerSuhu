@@ -1,0 +1,311 @@
+/* Palet Warna & Variabel Dasar */
+:root {
+    --color-primary: #007bff;        /* Biru Cerdas */
+    --color-background: #f4f7f6;     /* Abu-abu Muda */
+    --color-card-bg: #ffffff;        /* Putih Bersih */
+    --color-success: #28a745;        /* Hijau (Active) */
+    --color-warning: #ffc107;        /* Kuning (PABX) */
+    --color-danger: #dc3545;         /* Merah (Genset) */
+    --color-info: #17a2b8;           /* Cyan (Kelembapan) */
+    --color-white: #ffffff;           /* Cyan (Kelembapan) */
+    --color-text-dark: #333;
+    --color-text-muted: #6c757d;
+    --card-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Menggunakan font yang lebih modern jika tersedia */
+}
+
+body {
+    background-color: var(--color-background);
+    color: var(--color-text-dark);
+    line-height: 1.6;
+}
+
+/* --- Header --- */
+.dashboard-header {
+    background-color: var(--color-primary);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    margin-bottom: 20px;
+}
+
+.dashboard-header h1 {
+    font-size: 2.2em;
+    font-weight: 700;
+}
+
+/* --- Container Utama (Grid untuk 3 Kartu dan Grafik) --- */
+/* {{Default}} */
+.dashboard-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 25px;
+    padding: 25px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding : 0px 5px;
+}
+
+
+.chart-container {
+    display: flex;
+    /* Default: 1 kolom untuk layar sangat kecil */
+    grid-template-columns: 1fr;
+    gap: 25px;
+    padding: 25px;
+    max-width: 1400px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
+
+/* --- Kartu Ruangan Server (Meningkatkan Estetika Card) --- */
+.server-room-card {
+    background-color: var(--color-card-bg);
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: var(--card-shadow);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-left: 6px solid var(--color-primary); /* Garis modern di kiri */
+}
+
+.server-room-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Warna khusus untuk border dan elemen spesifik per ruangan */
+.room-1.server-room-card { border-left-color: var(--color-primary); }
+.room-2.server-room-card { border-left-color: var(--color-warning); }
+.room-3.server-room-card { border-left-color: var(--color-danger); }
+
+
+/* --- Header Kartu --- */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #f0f0f0; /* Garis pemisah lebih halus */
+}
+
+.card-header h2 {
+    font-size: 1.4em;
+    font-weight: 600;
+}
+/* Warna judul ikon menyesuaikan border */
+.room-1 .card-header h2, .room-1 .card-header .fas { color: var(--color-primary); }
+.room-2 .card-header h2, .room-2 .card-header .fas { color: var(--color-warning); }
+.room-3 .card-header h2, .room-3 .card-header .fas { color: var(--color-danger); }
+
+
+/* --- Indikator Status --- */
+.status-indicator {
+    padding: 4px 10px;
+    border-radius: 15px;
+    font-weight: 600;
+    font-size: 0.8em;
+    text-transform: uppercase;
+}
+
+.status-indicator.online {
+    background-color: var(--color-success);
+    color: white;
+}
+.status-indicator.warning {
+    background-color: var(--color-warning);
+    color: var(--color-text-dark); /* Teks gelap di latar kuning */
+}
+
+
+/* --- Data Grid (Suhu & Kelembapan) --- */
+.data-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 20px;
+    color
+}
+
+.data-item {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column; /* Mengubah tata letak agar ikon di atas/di samping label */
+    padding: 15px;
+    background-color: #f8f9fa; /* Latar belakang item data */
+    border-radius: 8px;
+    transition: background-color 0.2s;
+    min-width: 48%;
+    border: 1px solid #eee; /* Garis tepi tipis untuk definisi */
+}
+
+.data-item:hover {
+    background-color: #e9ecef;
+}
+
+.data-item .fas {
+    font-size: 2.5em;
+    margin-bottom: 5px; /* Spasi ikon dengan teks */
+}
+
+/* Penyesuaian Warna Ikon Data (Menggunakan Palet Baru) */
+.data-item.temperature .fas { color: var(--color-primary); }
+.data-item.humidity .fas, .data-item.rpm-fan .fas { color: var(--color-info); }
+/* Ruangan Genset memiliki warna ikon yang berbeda */
+.room-3 .data-item.temperature .fas { color: var(--color-danger); }
+.room-3 .data-item.humidity .fas { color: var(--color-danger); } /* Menggunakan merah untuk fan RPM juga */
+
+
+.value-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.label {
+    font-size: 0.85em;
+    color: var(--color-text-muted);
+    font-weight: 500;
+    margin-top: 5px; /* Spasi label dari ikon */
+}
+
+.value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--color-text-dark);
+    line-height: 1.1;
+}
+/* Menyesuaikan warna nilai agar lebih konsisten dengan card */
+.room-1 .value { color: var(--color-primary); }
+.room-2 .value { color: var(--color-warning); }
+.room-3 .value { color: var(--color-danger); }
+
+
+/* --- Pembaruan Terakhir --- */
+.last-update {
+    font-size: 0.8em;
+    color: var(--color-text-muted);
+    text-align: right;
+    padding-top: 15px;
+    border-top: 1px solid #f0f0f0;
+}
+
+ .chart-card-wrapper {
+             /* 🎯 Diatur agar mengambil seluruh lebar grid */
+    grid-column: 1 / -1;
+    }
+.chart-container {
+    width: 100%;
+    height: auto;
+    background: var(--color-card-bg);
+    padding: 25px 35px; /* Tambah padding kanan/kiri untuk ruang sumbu Y */
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+    display: block; /* Mengatasi display: flex yang mungkin ada di CSS asli */
+}
+
+        /* SOLUSI UTAMA: Batasi tinggi Canvas agar tidak meregang dan tetap responsif */
+#tempHumidChart {
+    width: 100% !important;
+    height: 350px !important; /* Tinggi tetap yang bagus untuk dashboard */
+}
+
+.chart-container h1 {
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    color: var(--color-text-dark);
+}
+
+/* ====================================================== */
+/* --- MEDIA QUERIES (Responsif) --- */
+/* ====================================================== */
+/* Layar sangat kecil (<= 360px) */
+@media (max-width: 330px) {
+    body, html {
+        overflow-x: hidden;
+    }
+
+    .dashboard-header h1 {
+        font-size: 1.2em;
+    }
+
+    .data-item {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .data-item .fas {
+        margin: 0 0 6px 0;
+        font-size: 1em;
+    }
+
+    .server-room-card {
+        padding: 10px;
+    }
+
+    .server-room-card h3 {
+        font-size: 0.95em;
+    }
+
+    .server-room-card p {
+        font-size: 0.8em;
+    }
+}
+
+/* Ponsel kecil - sedang (361px sampai 600px) */
+@media (max-width: 600px) and (min-width: 361px) {
+    .dashboard-header h1 {
+        font-size: 1.6em;
+    }
+
+    .data-grid {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .server-room-card {
+        padding: 15px;
+    }
+}
+
+/* Tablet (>=768px) -> 2 kolom */
+@media (min-width: 768px) {
+    .dashboard-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    .chart-card-wrapper {
+        grid-column: 1 / span 2;
+    }
+}
+
+/* Desktop (>=992px) -> 3 kolom */
+@media (min-width: 992px) {
+    .dashboard-container {
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 30px;
+    }
+
+    .chart-card-wrapper {
+        grid-column: 1 / span 3;
+    }
+
+    .data-item {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .data-item .fas {
+        margin-right: 15px;
+        margin-bottom: 0;
+    }
+}
+
+
